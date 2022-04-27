@@ -1,10 +1,11 @@
 {
-	"extends": "./tsconfig",
+	"extends": "./tsconfig.dist.json",
 	"compilerOptions": {
 		"sourceMap": true,
 		"inlineSources": true,
 		"rootDir": "./source",
-		"outDir": "./distribution/mjs"
+		"outDir": "./distribution/cjs",
+	    "module": "commonjs",
 	},
 	"include": [
 		"source"
