@@ -1,19 +1,24 @@
 {
-	"name": "ky",
-	"version": "0.30.0",
+	"name": "@p0vidl0/ky",
+	"version": "0.29.0",
 	"description": "Tiny and elegant HTTP client based on the browser Fetch API",
 	"license": "MIT",
-	"repository": "sindresorhus/ky",
-	"funding": "https://github.com/sindresorhus/ky?sponsor=1",
+	"repository": "p0vidl0/ky",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
 		"url": "https://sindresorhus.com"
 	},
 	"type": "module",
-	"main": "./distribution/index.js",
-	"exports": "./distribution/index.js",
-	"types": "./distribution/index.d.ts",
+	"main": "./distribution/cjs/index.js",
+	"module": "./distribution/mjs/index.js",
+	"exports": {
+		".": {
+			"import": "./distribution/mjs/index.js",
+			"require": "./distribution/cjs/index.js"
+		}
+	},
+	"types": "./distribution/mjs/index.d.ts",
 	"engines": {
 		"node": ">=12"
 	},
@@ -21,7 +26,8 @@
 		"test": "xo && npm run build && ava",
 		"debug": "PWDEBUG=1 ava --timeout=2m",
 		"release": "np",
-		"build": "del-cli distribution && tsc --project tsconfig.dist.json",
+		"build": "del-cli distribution && tsc --project tsconfig.dist.json && tsc --project tsconfig.dist.cjs.json",
+		"postbuild": "node post-build.js",
 		"prepare": "npm run build"
 	},
 	"files": [

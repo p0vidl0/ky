@@ -1,3 +1,5 @@
+> This is the fork of great [sindresorhus/ky](https://github.com/sindresorhus/ky) library with support of commonjs code
+
 <div align="center">
 	<br>
 	<div>
